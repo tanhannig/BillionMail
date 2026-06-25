@@ -77,6 +77,7 @@ cd core && go test -count=1 -short ./internal/service/... && cd frontend && pnpm
 
 - NEVER use bare domain for mail infrastructure (DNS, certs, DKIM, dedicated IPs). Always use `public.FormatMX(domain)` to get the mail hostname (e.g., `mail.example.com`).
 - When adding new controllers, add the module name to the RBAC `modules` list in `core/internal/service/middlewares/rbac.go`.
+- When writing DB queries in the DAO layer, always specify explicit column names instead of `SELECT *` to avoid breakage when new columns are added.
 
 ## Commands
 
@@ -84,3 +85,8 @@ cd core && go test -count=1 -short ./internal/service/... && cd frontend && pnpm
 - `/fix` - Lint + typecheck + auto-fix with parallel agents
 - `/commit` - Quality checks + AI commit + push
 - `/update-app` - Update deps + fix deprecations
+
+## Personal Notes
+
+> This is my personal fork for studying GoFrame v2 patterns and bulk-mail architecture.
+> Upstream: https://github.com/Billionmail/BillionMail
